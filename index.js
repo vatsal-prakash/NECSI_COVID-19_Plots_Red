@@ -1,6 +1,6 @@
 var margin = {top: 50, right: 20, bottom: 50, left: 20},
-    width = 150 - margin.left - margin.right,
-    height = 175 - margin.top - margin.bottom;
+    width = 220 - margin.left - margin.right,
+    height = 200 - margin.top - margin.bottom;
  
 //Read the data from csv file
 // d3.csv("./result.csv", function(data) {
