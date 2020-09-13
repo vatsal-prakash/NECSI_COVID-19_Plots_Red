@@ -1,6 +1,8 @@
-var margin = {top: 50, right: 20, bottom: 50, left: 20},
-    width = 220 - margin.left - margin.right,
-    height = 200 - margin.top - margin.bottom;
+//var margin = {top: 50, right: 20, bottom: 50, left: 20},
+var margin = {top: 58, right: 35, bottom: 58, left: 35},
+//var margin = {top: 50, right: 30, bottom: 50, left: 30},
+    width = 270 - margin.left - margin.right,
+    height = 220 - margin.top - margin.bottom;
  
 //Read the data from csv file
 // d3.csv("./result.csv", function(data) {
@@ -58,7 +60,7 @@ var margin = {top: 50, right: 20, bottom: 50, left: 20},
     .append("g")
     // .attr("transform", "translate(0," + height + ")")
     .attr("transform", "translate(0," + (height-10)+ ")")
-    .style("font-size", "8px")
+    .style("font-size", "10px")
     .call(d3.axisBottom(x).tickFormat(d3.timeFormat("%b"))); // plotting x axis for each svg plot
   svg
     .append("path") // plotting line for each svg plot
@@ -86,8 +88,8 @@ var margin = {top: 50, right: 20, bottom: 50, left: 20},
     // creates box to hold text 
     focus.append("rect")
       .attr("class", "tooltip")
-      .attr("width", 65)
-      .attr("height", 45)
+      .attr("width", 95)
+      .attr("height", 50)
       .attr("x", -25)
       .attr("y", -55)
       .attr("rx", 4)
@@ -95,22 +97,28 @@ var margin = {top: 50, right: 20, bottom: 50, left: 20},
 
     focus.append("text")
       .attr("x", -25)
-      .attr("dy", 0);
+      //.attr("dy", 0)
+	  .attr("dy", 10)
+	  .style("font-size", "12px");
         
     focus.append("text")
       .attr("class", "tooltip-date")
       .attr("x", -20)
-      .attr("y", -45);
+      //.attr("y", -45)
+	  .attr("y", -40)
+	  .style("font-size", "12px");
 
     focus.append("text")
       .attr("class", "tooltip-info-avg")
       .attr("x", -20)
-      .attr("y", -30);
+      .attr("y", -26)
+	  .style("font-size", "12px");
 
     focus.append("text")
       .attr("class", "tooltip-info-new")
       .attr("x", -20)
-      .attr("y", -15);
+      .attr("y", -12)
+	  .style("font-size", "12px");
 
     svg.append("rect")
       .attr("class", "overlay")
@@ -138,27 +146,30 @@ var margin = {top: 50, right: 20, bottom: 50, left: 20},
     .append("text")
     .attr("text-anchor", "middle")
     .attr("transform",
-          "translate(" + ((width-margin.left)/2) + " ," + (height+20) + ")") //centers titles
+          "translate(" + ((width-margin.left)/2) + " ," + (height+24) + ")") //centers titles
     .text(function(d){ return(d.key)})
+	.style("font-size", "18px")
     .style("fill", "black");
 
     // total cases title
     svg
     .append("text")
-    .style("font-size", "10px")
+    .style("font-size", "13px")
+	//.attr("x", 0)
+    //.attr("y", 10)
     .attr("text-anchor", "middle")
     .attr("transform",
-          "translate(" + ((width-margin.left)/2) + " ," + (height+37) + ")") //centers titles
+          "translate(" + ((width-margin.left)/2) + " ," + (height+40) + ")") //centers titles
     .text(function(d){ return("Total Cases: "+d3.format(",")(d.values[0].total_cases))})
     .style("fill", "grey");
   
     // recent/new day title
     svg
     .append("text")
-    .style("font-size", "10px")
+    .style("font-size", "13px")
     .attr("text-anchor", "middle")
     .attr("transform",
-          "translate(" + ((width-margin.left)/2) + " ," + (height+47) + ")") //centers titles
+          "translate(" + ((width-margin.left)/2) + " ," + (height+55) + ")") //centers titles
     .text(function(d){ return("Recent/New Day: "+ d3.format(",")(Math.round(d.values[d.values.length-1].recent_new)))})
     .style("fill", "grey");
 })
