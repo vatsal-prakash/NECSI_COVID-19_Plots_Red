@@ -170,6 +170,6 @@ var margin = {top: 58, right: 35, bottom: 58, left: 35},
     .attr("text-anchor", "middle")
     .attr("transform",
           "translate(" + ((width-margin.left)/2) + " ," + (height+55) + ")") //centers titles
-    .text(function(d){ return("Recent/New Day: "+ d3.format(",")(Math.round(d.values[d.values.length-1].recent_new)))})
+    .text(function(d){ return("Recent New/Day: "+ d3.format(",")(Math.round(d.values[d.values.length-1].recent_new)))})
     .style("fill", "grey");
 })
